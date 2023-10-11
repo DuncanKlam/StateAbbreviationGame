@@ -190,10 +190,19 @@ function App() {
 
   function generateOptions({ state, abbr }: GData){
     const normalized = state.toUpperCase().replaceAll(" ", "")
+    const firstLetter = normalized[0] + normalized[1]
+    const lastLetter = normalized[0] + normalized[normalized.length - 1]
     let answers = [abbr]
+    let count = 0
     while (answers.length < 3) {
-      const potentialAnswer = normalized[0] + normalized[Math.floor(Math.random()*normalized.length)]
+      const potentialAnswer = 
+        count === 0 
+        ? firstLetter 
+        : count === 1
+          ? lastLetter
+          : (normalized[0] + normalized[Math.floor(Math.random()*normalized.length)])
       if(!answers.includes(potentialAnswer)){answers.push(potentialAnswer)}
+      count++
     }
     return shuffle(answers)
   }
