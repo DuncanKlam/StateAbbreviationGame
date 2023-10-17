@@ -47,26 +47,38 @@ function App() {
         }
         { 
           isSetupButtonsVisible && 
-          <div className="question-group">
-            <div className="question">
-              <p>Playstyle?</p>
+          <>
+            <div className="question-group">
+              <div className="question">
+                <p>Playstyle?</p>
+                <div className="button-row">
+                  <button className={`${playstyle === PlayStyle.EASY && 'selected'}`} onClick={playstyleEasy}>Easy</button>
+                  <button className={`${playstyle === PlayStyle.NORMAL && 'selected'}`} onClick={playstyleNormal}>Normal</button>
+                </div>
+              </div>
+              <div className="question">
+                <p>Gamemode?</p>
+                <div className="button-row">
+                  <button className={`${gamemode === GameMode.EASY && 'selected'}`} onClick={gamemodeEasy}>Easy</button>
+                  <button className={`${gamemode === GameMode.HARD && 'selected'}`} onClick={gamemodeHard}>Hard</button>
+                  <button className={`${gamemode === GameMode.GODLY && 'selected'}`} onClick={gamemodeGodly}>Godly</button>
+                </div>
+              </div>
               <div className="button-row">
-                <button className={`${playstyle === PlayStyle.EASY && 'selected'}`} onClick={playstyleEasy}>Easy</button>
-                <button className={`${playstyle === PlayStyle.NORMAL && 'selected'}`} onClick={playstyleNormal}>Normal</button>
+                <button className="next-button" onClick={startGame}>Start</button>
               </div>
             </div>
-            <div className="question">
-              <p>Gamemode?</p>
-              <div className="button-row">
-                <button className={`${gamemode === GameMode.EASY && 'selected'}`} onClick={gamemodeEasy}>Easy</button>
-                <button className={`${gamemode === GameMode.HARD && 'selected'}`} onClick={gamemodeHard}>Hard</button>
-                <button className={`${gamemode === GameMode.GODLY && 'selected'}`} onClick={gamemodeGodly}>Godly</button>
-              </div>
+            <div className="example-portal">
+              <ul>
+                <li>
+                  Playstyle
+                </li>
+                <li>
+                  Gamemode
+                </li>
+              </ul>
             </div>
-            <div className="button-row">
-              <button className="next-button" onClick={startGame}>Start</button>
-            </div>
-          </div>
+          </>
         }
         {
           showGame &&
